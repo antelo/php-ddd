@@ -1,0 +1,20 @@
+default:
+  extensions:
+    FriendsOfBehat\SymfonyExtension:
+      kernel:
+        class: DDD\App\Kernel
+        environment: test
+      bootstrap: tests/bootstrap.php
+    Behat\MinkExtension:
+      sessions:
+        default:
+          symfony: ~
+    Behatch\Extension: ~
+
+  suites:
+    default:
+      contexts:
+        - behatch:context:json
+        - behatch:context:rest
+        - Behat\MinkExtension\Context\MinkContext
+      paths: [ 'tests/app/features' ]
